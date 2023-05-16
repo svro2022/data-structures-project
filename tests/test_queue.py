@@ -32,3 +32,15 @@ class TestQueue(unittest.TestCase):
 
         queue1 = Queue()
         assert str(queue1) == ""
+
+    def test_dequeue(self):
+        four = Queue()
+        four.enqueue('data1')
+        four.enqueue('data2')
+        four.enqueue('data3')
+
+        assert four.dequeue() == 'data1'
+        assert four.dequeue() == 'data2'
+        assert four.dequeue() == 'data3'
+        assert four.dequeue() is None
+
