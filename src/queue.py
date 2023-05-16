@@ -26,7 +26,7 @@ class Queue:
         :param data: данные, которые будут добавлены в очередь
         """
         node = Node(data)
-        if not self.head and not self.tail:
+        if self.tail is None:
             self.head = node
             self.tail = node
         else:
@@ -43,6 +43,10 @@ class Queue:
             return None
         data = self.head.data
         self.head = self.head.next_node
+
+        if self.head is None:
+            self.tail = None
+
         return data
 
     def __str__(self):
