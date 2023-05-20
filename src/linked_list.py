@@ -1,18 +1,51 @@
 class Node:
     """Класс для узла односвязного списка"""
-    pass
+
+    def __init__(self, data=None, next_node=None):
+        """
+        Конструктор класса Node
+        :param data: данные, которые будут храниться в узле
+        """
+        self.data = data
+        self.next_node = next_node
+
+    def __str__(self):
+        return self.data
 
 
 class LinkedList:
     """Класс для односвязного списка"""
 
+    def __init__(self):
+        self.head = None
+
     def insert_beginning(self, data: dict) -> None:
         """Принимает данные (словарь) и добавляет узел с этими данными в начало связанного списка"""
-        pass
+        try:
+            if not isinstance(data, dict):
+                raise TypeError("Входные данные должны быть словарем")
+        except TypeError as e:
+            print(f"Ошибка ввода значения --{data}--: {e}")
+        else:
+            node = Node(data, self.head)
+            self.head = node
 
     def insert_at_end(self, data: dict) -> None:
         """Принимает данные (словарь) и добавляет узел с этими данными в конец связанного списка"""
-        pass
+        try:
+            if not isinstance(data, dict):
+                raise TypeError("Данные не являются словарем ")
+        except TypeError as e:
+            print(f"Ошибка ввода значения : {e}")
+        else:
+            node = Node(data)
+            if self.head is None:
+                self.head = node
+                return
+            lastnode = self.head
+            while (lastnode.next_node):
+                lastnode = lastnode.next_node
+            lastnode.next_node = node
 
     def __str__(self) -> str:
         """Вывод данных односвязного списка в строковом представлении"""
